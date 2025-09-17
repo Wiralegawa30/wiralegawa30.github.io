@@ -1,0 +1,350 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar-brand {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: 24px;
+}
+
+.navbar-nav {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.jumbotron {
+  padding-top: 100px;
+  padding-bottom: 75px;
+  background-color: #c7ddff;
+}
+
+.jumbotron img {
+  background-size: cover;
+  width: 200px;
+}
+
+.jumbotron .display-4 {
+  font-size: 30px;
+}
+
+.jumbotron .lead {
+  font-size: 18px;
+}
+
+.about-me .text {
+  font-size: 18px;
+}
+
+.my-projects {
+  background-color: #c7ddff;
+  padding-bottom: 50px;
+}
+
+.my-skill {
+  padding-bottom: 50px;
+}
+
+.my-skill .container .item {
+  /* background-color: yellow; */
+  width: 175px;
+  margin-bottom: 30px;
+  /* margin: 10px; */
+}
+
+.my-skill img {
+  width: 100px;
+}
+
+.contact {
+  background-color: #c7ddff;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+.my-projects img {
+  /* Project images: responsive aspect + crop but keep ratio */
+.my-projects .card-img-top {
+  width: 100%;
+  aspect-ratio: 16/9;     /* responsive box; ganti ke 4/3 jika ingin lebih kotak */
+  object-fit: cover;      /* crop to fill the box, menjaga proporsi */
+  display: block;
+  border-radius: 6px;
+  height: auto;           /* fallback */
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 1/1) {
+  .my-projects .card-img-top {
+    height: 285px;        /* original fixed height as fallback */
+  }
+}
+}
+
+.judul-project {
+  font-weight: 400;
+}
+
+.quote {
+  width: 300px;
+  margin: auto;
+}
+
+.text-quote {
+  font-weight: 100;
+}
+
+footer {
+  padding-top: 50px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .navbar-brand {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 24px;
+  }
+
+  .navbar-nav {
+    font-size: 18px;
+  }
+
+  .navbar-nav li:hover {
+    border-bottom: 3px solid rgb(19, 17, 17);
+    margin-top: -3px;
+  }
+
+.jumbotron img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: #e30505; /* Atau warna merah lain yang Anda inginkan */
+}
+
+  .jumbotron .display-4 {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .jumbotron .lead {
+    font-size: 24px;
+  }
+
+  .about-me .text {
+    font-size: 24px;
+  }
+
+  .my-projects img /* Project images: responsive aspect + crop but keep ratio */
+.my-projects .card-img-top {
+  width: 100%;
+  aspect-ratio: 16/9;     /* responsive box; ganti ke 4/3 jika ingin lebih kotak */
+  object-fit: cover;      /* crop to fill the box, menjaga proporsi */
+  display: block;
+  border-radius: 6px;
+  height: auto;           /* fallback */
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 1/1) {
+  .my-projects .card-img-top {
+    height: 285px;        /* original fixed height as fallback */
+  }
+}
+
+  .my-skill .container .item {
+    /* background-color: yellow; */
+    width: 300px;
+    /* margin: 10px; */
+    margin-bottom: 50px;
+  }
+
+  .my-skill img {
+    width: 150px;
+  }
+
+  .image-skill {
+    width: 250px;
+  }
+
+  .quote {
+    width: 800px;
+    margin: auto;
+  }
+
+.my-story {
+  background-color: #cfe2ff; /* warna biru seperti my-projects */
+}
+  /* === Hermawan timeline (alternating vertical) === */
+.putra-timeline { position: relative; padding: 2rem 0; }
+.putra-timeline::before{
+  content:""; position:absolute; top:0; bottom:0; left:50%;
+  width:4px; background:#e9ecef; transform:translateX(-50%);
+  border-radius:2px;
+}
+.putra-timeline .pt-item{
+  position:relative; width:50%; padding:1rem 2rem; box-sizing:border-box;
+  display:flex; align-items:flex-start; gap:1rem;
+}
+.putra-timeline .pt-badge{
+  width:56px; height:56px; border-radius:50%; background:#0d6efd;
+  display:flex; align-items:center; justify-content:center; color:#fff;
+  box-shadow:0 6px 18px rgba(13,110,253,0.18);
+  flex:0 0 56px;
+}
+.putra-timeline .pt-body{
+  background:#fff; border-radius:8px; padding:1rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.putra-timeline .pt-item:nth-child(odd){
+  left:0; text-align:right; flex-direction:row-reverse;
+  transform:translateX(-3%); /* sedikit offset */
+}
+.putra-timeline .pt-item:nth-child(even){
+  left:50%; transform:translateX(3%);
+}
+
+/* small screens: full width stacked */
+@media (max-width: 991.98px){
+  .putra-timeline::before{ left:24px; transform:none; width:3px; }
+  .putra-timeline .pt-item{ width:100%; padding-left:64px; padding-right:1rem; text-align:left; transform:none; }
+  .putra-timeline .pt-item .pt-badge{ position:absolute; left:0; top:1rem; }
+  .putra-timeline .pt-item:nth-child(odd), .putra-timeline .pt-item:nth-child(even){ left:0; }
+}
+/* Smooth fade for project images + maintain aspect ratio */
+.my-projects .card-img-top {
+  width: 100%;
+  height: 285px;            /* bisa sesuaikan - sesuai breakpoint di file lama */
+  object-fit: cover;        /* mencegah gambar gepeng */
+  display: block;
+  opacity: 1;               /* default visible */
+  transition: opacity 600ms ease-in-out; /* durasi transisi */
+}
+
+/* jika ingin override untuk layar kecil, gunakan media query */
+@media (max-width: 991.98px) {
+  .my-projects .card-img-top {
+    height: 250px;
+  }
+}
+/* ========================
+   Section backgrounds (subtle)
+   ======================== */
+.about-me, .my-skill {
+  background: linear-gradient(180deg, #f6fbff 0%, #eaf4ff 100%);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 22px);
+  position: relative;
+  overflow: hidden;
+  padding-top: 4rem;  /* override section spacing jika perlu */
+  padding-bottom: 4rem;
+}
+
+/* optional soft decorative circles */
+.about-me::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -120px;
+  top: -60px;
+  background: radial-gradient(circle at 30% 30%, rgba(199,221,255,0.45), transparent 40%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+/* Responsive quote */
+.quote {
+  max-width: clamp(260px, 60vw, 820px);
+  margin: 2rem auto;
+  padding: clamp(12px, 2.2vw, 28px);
+  background: rgba(255,255,255,0.92);
+  border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+}
+
+.quote img {
+  width: clamp(80px, 16vw, 150px);
+  height: auto;
+}
+
+.text-quote {
+  font-size: clamp(15px, 2.1vw, 20px);
+  line-height: 1.45;
+  font-weight: 300;
+}
+/* Card hover lift + image zoom (smooth) */
+.card {
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms;
+  will-change: transform;
+  border: 0;
+  overflow: hidden;
+}
+
+.card:focus-within,
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+  outline: none;
+}
+
+/* Slight zoom on image */
+.card .card-img-top {
+  transition: transform 420ms ease;
+  transform-origin: center center;
+}
+
+.card:hover .card-img-top,
+.card:focus-within .card-img-top {
+  transform: scale(1.04);
+}
+
+/* Button hover minor */
+.card .btn {
+  transition: transform 200ms, background-color 200ms;
+}
+.card .btn:hover {
+  transform: translateY(-3px);
+}
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: transform 260ms ease, filter 260ms;
+}
+
+.gallery-item img:hover,
+.gallery-item img:focus {
+  transform: scale(1.03);
+  filter: brightness(0.98);
+}
+
+/* Modal adjustments */
+#galleryModal .modal-content {
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#galleryModalImg {
+  max-height: 78vh;
+  object-fit: contain;
+}
+#galleryModalCaption {
+  color: #fff;
+  font-size: 0.95rem;
+}
+}
