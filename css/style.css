@@ -21,6 +21,8 @@ html {
 .jumbotron img {
   background-size: cover;
   width: 200px;
+  height: 200px;            /* tambahkan ini sebagai fallback */
+  aspect-ratio: 1 / 1;      /* tambahkan ini untuk solusi modern */
 }
 
 .jumbotron .display-4 {
@@ -115,12 +117,12 @@ footer {
     margin-top: -3px;
   }
 
-.jumbotron img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  background-color: #e30505; /* Atau warna merah lain yang Anda inginkan */
-}
+  .jumbotron img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background-color: #e30505;
+  }
 
   .jumbotron .display-4 {
     font-size: 36px;
@@ -135,27 +137,25 @@ footer {
     font-size: 24px;
   }
 
-  .my-projects img /* Project images: responsive aspect + crop but keep ratio */
-.my-projects .card-img-top {
-  width: 100%;
-  aspect-ratio: 16/9;     /* responsive box; ganti ke 4/3 jika ingin lebih kotak */
-  object-fit: cover;      /* crop to fill the box, menjaga proporsi */
-  display: block;
-  border-radius: 6px;
-  height: auto;           /* fallback */
-}
-
-/* Fallback for browsers without aspect-ratio support */
-@supports not (aspect-ratio: 1/1) {
+  /* === Perbaikan untuk My Projects === */
   .my-projects .card-img-top {
-    height: 285px;        /* original fixed height as fallback */
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    height: auto;
   }
-}
+  
+  @supports not (aspect-ratio: 1/1) {
+    .my-projects .card-img-top {
+      height: 285px;
+    }
+  }
 
+  /* === Perbaikan untuk My Skill === */
   .my-skill .container .item {
-    /* background-color: yellow; */
     width: 300px;
-    /* margin: 10px; */
     margin-bottom: 50px;
   }
 
@@ -167,48 +167,59 @@ footer {
     width: 250px;
   }
 
+  /* === Perbaikan untuk Quote === */
   .quote {
     width: 800px;
     margin: auto;
   }
+  
+  .my-story {
+    background-color: #cfe2ff;
+  }
 
-.my-story {
-  background-color: #cfe2ff; /* warna biru seperti my-projects */
-}
-  /* === Hermawan timeline (alternating vertical) === */
-.putra-timeline { position: relative; padding: 2rem 0; }
-.putra-timeline::before{
-  content:""; position:absolute; top:0; bottom:0; left:50%;
-  width:4px; background:#e9ecef; transform:translateX(-50%);
-  border-radius:2px;
-}
-.putra-timeline .pt-item{
-  position:relative; width:50%; padding:1rem 2rem; box-sizing:border-box;
-  display:flex; align-items:flex-start; gap:1rem;
-}
-.putra-timeline .pt-badge{
-  width:56px; height:56px; border-radius:50%; background:#0d6efd;
-  display:flex; align-items:center; justify-content:center; color:#fff;
-  box-shadow:0 6px 18px rgba(13,110,253,0.18);
-  flex:0 0 56px;
-}
-.putra-timeline .pt-body{
-  background:#fff; border-radius:8px; padding:1rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);
-}
-.putra-timeline .pt-item:nth-child(odd){
-  left:0; text-align:right; flex-direction:row-reverse;
-  transform:translateX(-3%); /* sedikit offset */
-}
-.putra-timeline .pt-item:nth-child(even){
-  left:50%; transform:translateX(3%);
-}
+  /* === Perbaikan untuk Timeline === */
+  .putra-timeline {
+    position: relative;
+    padding: 2rem 0;
+  }
+  .putra-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #e9ecef;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  .putra-timeline .pt-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .putra-timeline .pt-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+    flex-direction: row-reverse;
+    transform: translateX(-3%);
+  }
+  .putra-timeline .pt-item:nth-child(even) {
+    left: 50%;
+    transform: translateX(3%);
+  }
 
-/* small screens: full width stacked */
-@media (max-width: 991.98px){
-  .putra-timeline::before{ left:24px; transform:none; width:3px; }
-  .putra-timeline .pt-item{ width:100%; padding-left:64px; padding-right:1rem; text-align:left; transform:none; }
-  .putra-timeline .pt-item .pt-badge{ position:absolute; left:0; top:1rem; }
-  .putra-timeline .pt-item:nth-child(odd), .putra-timeline .pt-item:nth-child(even){ left:0; }
+  /* === Perbaikan untuk Galeri === */
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gallery-item img {
+    height: 220px;
+  }
 }
 /* Smooth fade for project images + maintain aspect ratio */
 .my-projects .card-img-top {
@@ -320,7 +331,6 @@ footer {
 
 .gallery-item img {
   width: 100%;
-  height: 220px;
   object-fit: cover;
   display: block;
   cursor: pointer;
@@ -347,4 +357,31 @@ footer {
   color: #fff;
   font-size: 0.95rem;
 }
+/* Aturan dasar untuk semua layar (mobile-first) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Default 2 kolom untuk mobile */
+  gap: 8px;
+  margin-top: 1rem;
+}
+.gallery-item img {
+  height: 160px; /* Atur tinggi gambar agar proporsional di mobile */
+}
+
+/* Aturan untuk layar tablet dan di atasnya */
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk tablet */
+    gap: 12px;
+  }
+}
+
+/* Aturan untuk layar desktop dan di atasnya */
+@media (min-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom untuk desktop */
+  }
+  .gallery-item img {
+    height: 220px; /* Atur tinggi gambar agar lebih besar di desktop */
+  }
 }
