@@ -117,12 +117,22 @@ footer {
     margin-top: -3px;
   }
 
+.jumbotron img {
+    width: 150px;          /* ukuran default untuk mobile */
+    height: 150px;         /* sama dengan width, biar tetap bulat */
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+/* untuk layar lebih besar */
+@media (min-width: 768px) {
   .jumbotron img {
     width: 200px;
     height: 200px;
-    object-fit: contain;
-    background-color: #e30505;
   }
+}
+
 
   .jumbotron .display-4 {
     font-size: 36px;
@@ -262,6 +272,51 @@ footer {
   pointer-events: none;
   opacity: 0.7;
 }
+
+/* === About side cards (soft-skill / interest) === */
+.about-side-card {
+  background: rgba(255,255,255,0.95); /* sedikit kontras terhadap background section */
+  border-radius: 12px;
+  border: 1px solid rgba(2,6,23,0.06);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+  min-height: 120px;
+}
+
+/* Judul kecil di card */
+.about-side-card h5 {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Skill progress visuals */
+.skill-list .progress {
+  height: 8px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
+}
+
+.skill-list .progress-bar {
+  transition: width 900ms cubic-bezier(.2,.8,.2,1);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0d6efd, #6610f2); /* bootstrap blue -> purple gradient */
+}
+
+/* Spacing kecil untuk icon list */
+.about-side-card .fa-solid {
+  color: rgba(13,110,253,0.95);
+}
+
+/* Text center on medium screens for the main text */
+@media (min-width: 768px) {
+  .about-me .text-center .text { text-align: left; } /* keep reading flow centered only for mobile */
+}
+
+/* Adjust on very small screens: reduce padding so things keep compact */
+@media (max-width: 575.98px) {
+  .about-side-card { padding: 12px; }
+  .about-side-card h5 { font-size: 1rem; }
+}
+
 /* Responsive quote */
 .quote {
   max-width: clamp(260px, 60vw, 820px);
